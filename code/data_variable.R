@@ -7,7 +7,7 @@ library(purrr)
 project_path <- ".."
 data_path <- file.path(project_path, "data")
 
-api_key <- "0fb3ea034850ddaa1e3b39cf430736965e994518"
+api_key <- "please use your own API key"
 
 if (api_key == "YOUR_CENSUS_API_KEY") {
   stop("Please enter your Census API key.")
