@@ -3,8 +3,19 @@ library(dplyr)
 library(readr)
 library(ggplot2)
 
-income_path <- "D:/Rproject/6400_blog_5/data/county_income_2014_2024.csv"
-shapefile_path <- "D:/Rproject/6400_blog_5/data/county_shapefile/tl_2024_us_county.shp"
+project_path <- ".."
+data_path <- file.path(project_path, "data")
+shapefile_path <- file.path(
+  data_path,
+  "county_shapefile",
+  "tl_2024_us_county.shp"
+)
+figure_path <- file.path(project_path, "figure")
+
+income_path <- file.path(
+  data_path,
+  "county_income_2014_2024.csv"
+)
 
 income_data <- read_csv(income_path)
 print(head(income_data))
@@ -81,8 +92,6 @@ income_map$income_group <- factor(
     "Highest 20%"
   )
 )
-
-figure_path <- "D:/Rproject/6400_blog_5/figure"
 
 dir.create(
   figure_path,
