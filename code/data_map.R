@@ -1,9 +1,10 @@
 library(sf)
 library(dplyr)
-raw_data_folder <- "D:/Rproject/6400_blog_5/data/raw data"
 
+project_path <- ".."
+data_path <- file.path(project_path, "data")
 shapefile_folder <- file.path(
-  raw_data_folder,
+  data_path,
   "county_shapefile"
 )
 
@@ -18,7 +19,7 @@ county_url <- paste0(
   "TIGER2024/COUNTY/tl_2024_us_county.zip"
 )
 zip_path <- file.path(
-  raw_data_folder,
+  data_path,
   "tl_2024_us_county.zip"
 )
 
