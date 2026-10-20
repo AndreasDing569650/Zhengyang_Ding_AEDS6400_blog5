@@ -4,6 +4,9 @@ library(dplyr)
 library(readr)
 library(purrr)
 
+project_path <- ".."
+data_path <- file.path(project_path, "data")
+
 api_key <- "0fb3ea034850ddaa1e3b39cf430736965e994518"
 
 if (api_key == "YOUR_CENSUS_API_KEY") {
@@ -56,7 +59,7 @@ income_data <- map_dfr(years, get_income_data)
 
 write_csv(
   income_data,
-  "county_income_2014_2024.csv"
+  file.path(data_path, "county_income_2014_2024.csv")
 )
 
 print(head(income_data))
