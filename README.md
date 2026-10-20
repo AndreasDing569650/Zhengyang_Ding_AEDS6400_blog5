@@ -15,9 +15,13 @@ Zhengyang_Ding_AEDS6400_blog5/
 │   └── data_analysis.R
 │
 ├── data/
-│   ├── raw_data/
-│       ├── county_income_2014_2024.csv
-│       └── county_shapefile
+│   ├── county_income_2014_2024.csv
+│   └── county_shapefile/
+|       ├── tl_2024_us_county.cpg
+|       ├── tl_2024_us_county.dbf
+|       ├── tl_2024_us_county.prj
+|       ├── tl_2024_us_county.shp
+|       └── tl_2024_us_county.shx
 │
 ├── figure/
 │   ├── income_map_2024.png
