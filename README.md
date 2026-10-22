@@ -22,6 +22,17 @@ The analysis is structured in two steps:
 
 2. We compare the 2024 relative distribution map with the 2014 map. By holding the relative metric constant across the decade, we can isolate shifts in spatial inequality—observing whether middle-income counties are losing ground, whether low-income clusters expand, and whether high-income counties remain spatially concentrated.
 
+## Code Overview
+
+data_variable.R
+This script downloads the county-level median household income data from the U.S. Census Bureau API for 2014 and 2024 using the ACS 5-year estimates. It queries the B19013_001E variable for all counties across states, cleans the returned data, and creates a single combined dataset with county identifiers, income values, and year labels. The final output is saved to data/county_income_2014_2024.csv, which serves as the foundation for the later mapping and analysis steps.
+
+data_map.R
+This script downloads the 2024 U.S. county shapefile from the Census TIGER/Line repository and stores it in the data/county_shapefile/ directory. It unzips the files and loads the spatial county geometry into R so the project has a geographic base layer for each county. This script is essential for creating the map objects used later in the analysis and ensures that the county boundaries are aligned with the income data by county GEOID.
+
+data_analysis.R
+This script reads the income dataset and the county shapefile, merges them by GEOID, and prepares the data for spatial analysis. It groups counties into income quintiles, removes non-contiguous territories, and generates visualizations of median household income and relative income distribution for 2014 and 2024. The script then saves the final output plots to the figure/ folder, producing the maps used to illustrate the spatial geography of U.S. income inequality over the decade.
+
 ## Repository Structure
 
 Note: The SHP spatial data file of county shapes is beyond 25mb, thus cannot be uploaded to GitHub. The structure below still includes the file, forming a complete structure. One can always download the shapefile and place it in the `data/county_shapefile` folder.
