@@ -4,11 +4,17 @@ library(dplyr)
 library(readr)
 library(purrr)
 
-script_dir <- if (!is.null(sys.frames()[[1]]$ofile)) {
-  dirname(normalizePath(sys.frames()[[1]]$ofile))
+args <- commandArgs(trailingOnly = FALSE)
+file_arg <- sub("^--file=", "", args[grep("^--file=", args)])
+
+if (length(file_arg) > 0) {
+  script_dir <- dirname(normalizePath(file_arg))
+} else if (!is.null(sys.frames()[[1]]$ofile)) {
+  script_dir <- dirname(normalizePath(sys.frames()[[1]]$ofile))
 } else {
-  getwd()
+  script_dir <- getwd()
 }
+
 project_path <- normalizePath(file.path(script_dir, ".."))
 data_path <- file.path(project_path, "data")
 
