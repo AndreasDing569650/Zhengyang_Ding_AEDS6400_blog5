@@ -4,7 +4,12 @@ library(dplyr)
 library(readr)
 library(purrr)
 
-project_path <- ".."
+script_dir <- if (!is.null(sys.frames()[[1]]$ofile)) {
+  dirname(normalizePath(sys.frames()[[1]]$ofile))
+} else {
+  getwd()
+}
+project_path <- normalizePath(file.path(script_dir, ".."))
 data_path <- file.path(project_path, "data")
 
 api_key <- "please use your own API key"
