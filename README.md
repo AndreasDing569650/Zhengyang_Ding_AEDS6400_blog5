@@ -25,12 +25,15 @@ The analysis is structured in two steps:
 ## Code Overview
 
 data_variable.R
+
 This script downloads the county-level median household income data from the U.S. Census Bureau API for 2014 and 2024 using the ACS 5-year estimates. It queries the B19013_001E variable for all counties across states, cleans the returned data, and creates a single combined dataset with county identifiers, income values, and year labels. The final output is saved to data/county_income_2014_2024.csv, which serves as the foundation for the later mapping and analysis steps.
 
 data_map.R
+
 This script downloads the 2024 U.S. county shapefile from the Census TIGER/Line repository and stores it in the data/county_shapefile/ directory. It unzips the files and loads the spatial county geometry into R so the project has a geographic base layer for each county. This script is essential for creating the map objects used later in the analysis and ensures that the county boundaries are aligned with the income data by county GEOID.
 
 data_analysis.R
+
 This script reads the income dataset and the county shapefile, merges them by GEOID, and prepares the data for spatial analysis. It groups counties into income quintiles, removes non-contiguous territories, and generates visualizations of median household income and relative income distribution for 2014 and 2024. The script then saves the final output plots to the figure/ folder, producing the maps used to illustrate the spatial geography of U.S. income inequality over the decade.
 
 ## Repository Structure
